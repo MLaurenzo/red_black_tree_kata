@@ -37,6 +37,17 @@ public class Node {
         return null;
     }
 
+    public Node getUncle() {
+        if (parent == null) {
+            return null;
+        }
+        if (parent.left == this) {
+            return parent.right;
+        } else {
+            return parent.left;
+        }
+    }
+
     public void insert(int value) {
         if (value <= this.value) {
             if (left == null) {
