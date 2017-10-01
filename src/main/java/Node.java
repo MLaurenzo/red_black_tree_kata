@@ -1,13 +1,17 @@
-import java.util.Stack;
-
 public class Node {
     final int value;
     Node left = null;
     Node right = null;
-    boolean red = false;
+    Node parent = null;
+    boolean red = true;
 
     Node(int value) {
+        this(value, null);
+    }
+
+    Node(int value, Node parent) {
         this.value = value;
+        this.parent = parent;
     }
 
     public String display() {
@@ -36,13 +40,13 @@ public class Node {
     public void insert(int value) {
         if (value <= this.value) {
             if (left == null) {
-                left = new Node(value);
+                left = new Node(value, this);
             } else {
                 left.insert(value);
             }
         } else /*if (value > this.value)*/{
             if (right == null) {
-                right = new Node(value);
+                right = new Node(value, this);
             } else {
                 right.insert(value);
             }

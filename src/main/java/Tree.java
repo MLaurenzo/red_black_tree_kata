@@ -19,6 +19,7 @@ public class Tree {
     public void insert(int value) {
         if (root == null) {
             root = new Node(value);
+            root.red = false;
         } else {
             root.insert(value);
         }
