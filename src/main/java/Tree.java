@@ -23,4 +23,12 @@ public class Tree {
             root.insert(value);
         }
     }
+
+    public int depth() {
+        if (root == null) {
+            return 0;
+        } else {
+            return root.depth();
+        }
+    }
 }

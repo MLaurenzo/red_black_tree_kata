@@ -48,4 +48,13 @@ public class Node {
             }
         }
     }
+
+    public int depth() {
+        int depth = 0;
+        if (left != null)
+            depth = Math.max(depth, left.depth());
+        if (right != null)
+            depth = Math.max(depth, right.depth());
+        return depth +1;
+    }
 }
