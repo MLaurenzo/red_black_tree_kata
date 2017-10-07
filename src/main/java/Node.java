@@ -1,5 +1,5 @@
 public class Node {
-    final int value;
+    int value;
     Node left = null;
     Node right = null;
     Node parent = null;
@@ -12,6 +12,19 @@ public class Node {
     Node(int value, Node parent) {
         this.value = value;
         this.parent = parent;
+    }
+
+    public Node clone() {
+        Node node = new Node(value);
+        node.red = red;
+        return node;
+    }
+
+    public void copy(Node node) {
+        value = node.value;
+        left = node.left;
+        right = node.right;
+        red = node.red;
     }
 
     public String display() {
@@ -48,18 +61,20 @@ public class Node {
         }
     }
 
-    public void insert(int value) {
+    public Node insert(int value) {
         if (value <= this.value) {
             if (left == null) {
                 left = new Node(value, this);
+                return left;
             } else {
-                left.insert(value);
+                return left.insert(value);
             }
         } else /*if (value > this.value)*/{
             if (right == null) {
                 right = new Node(value, this);
+                return right;
             } else {
-                right.insert(value);
+                return right.insert(value);
             }
         }
     }
